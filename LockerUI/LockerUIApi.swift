@@ -220,6 +220,7 @@ public struct LockerUIOptions
     public var allowedLockTypes: [LockInfo]
     public var backgroundImage: UIImage?
     public var customTint: UIColor?
+    public var navBarTintColor: CSNavBarTintColor = .default
     public var navBarColor:CSNavBarColor = .default
     public var showLogo: ShowLogoOption = .always
     
@@ -243,17 +244,42 @@ public enum CSNavBarColor{
     
     case `default`
     case white
-
+    case custom(color: UIColor)
+    
     var color : UIColor {
         switch self{
         case .default:
             return UIColor(red: 202.0/255, green: 218.0/255, blue: 241.0/255, alpha: 1.0)
         case .white:
             return UIColor.white
+        case .custom(let color):
+            return color
         }
     }
     
 }
+
+public enum CSNavBarTintColor {
+    
+    case `default`
+    case dark
+    case custom(color: UIColor)
+    
+    var color : UIColor {
+        switch self{
+        case .default:
+            return UIColor(red: 35.0/255.0, green: 74.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+            
+        case .dark:
+            return UIColor(red: 33.0/255.0, green: 33.0/255.0, blue: 33.0/255.0, alpha: 1.0)
+            
+        case .custom(let color):
+            return color
+        }
+    }
+    
+}
+
 
 
 //==============================================================================

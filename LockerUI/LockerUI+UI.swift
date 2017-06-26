@@ -131,7 +131,8 @@ extension LockerUI
                 if let _ = UIApplication.shared.keyWindow?.frame {
                     self.lockerUIWindow = UIWindow( frame: UIScreen.main.bounds )
                     let rootVC = LockerNavigationController( rootViewController: viewController )
-                    rootVC.setupNavBar(self.lockerUIOptions.navBarColor)
+                    //rootVC.setupNavBar(self.lockerUIOptions.navBarColor)
+                    rootVC.setupNavBar(options: self.lockerUIOptions)
                     
                     self.lockerUIWindow?.rootViewController = rootVC
                     self.lockerUIWindow?.isHidden = false
@@ -152,7 +153,8 @@ extension LockerUI
             }
             else {
                 let navController: LockerNavigationController = self.lockerUIWindow?.rootViewController as! LockerNavigationController
-                navController.setupNavBar(self.lockerUIOptions.navBarColor)
+                //navController.setupNavBar(self.lockerUIOptions.navBarColor)
+                navController.setupNavBar(options: self.lockerUIOptions)
                 
                 navController.pushViewController(viewController, animated: true )
             }
@@ -175,7 +177,8 @@ extension LockerUI
             if self.lockerUIWindow != nil {
                 
                 let navController: LockerNavigationController = self.lockerUIWindow?.rootViewController as! LockerNavigationController
-                navController.setupNavBar(self.lockerUIOptions.navBarColor)
+                //navController.setupNavBar(self.lockerUIOptions.navBarColor)
+                navController.setupNavBar(options: self.lockerUIOptions)
                 
                 if navController.viewControllers.count > 0 {
                     CATransaction.begin()

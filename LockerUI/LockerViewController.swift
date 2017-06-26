@@ -162,7 +162,7 @@ class LockerViewController: UIViewController
     {
         if let image = self.imageNamed(imageName) {
             
-            let color = LockerUI.internalSharedInstance.mainColor
+            let color = LockerUI.internalSharedInstance.lockerUIOptions.navBarTintColor.color
             let newImage = image.imageWithColor(color)
             button.frame = CGRect( x: 0, y: 0, width: newImage.size.width, height: newImage.size.height )
             
@@ -180,7 +180,8 @@ class LockerViewController: UIViewController
     {
         for button in [self.backButton, self.cancelButton] where button != nil {
             let oldImage = button?.image(for: UIControlState())
-            let color    = LockerUI.internalSharedInstance.mainColor
+            let color = LockerUI.internalSharedInstance.lockerUIOptions.navBarTintColor.color
+            print("Nav button color: \(LockerUI.internalSharedInstance.lockerUIOptions.navBarTintColor)")
             let newImage = oldImage?.imageWithColor(color)
             button?.setImage(newImage, for: UIControlState())
         }

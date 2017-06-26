@@ -21,7 +21,8 @@ class LockerNavigationController: UINavigationController
     {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.setupNavBar(CSNavBarColor.default)
+//        self.setupNavBar(CSNavBarColor.default)
+        self.setupNavBar(backgroundColor: .default, tintColor: .default)
     }
     
     override var shouldAutorotate : Bool
@@ -29,9 +30,23 @@ class LockerNavigationController: UINavigationController
         return true
     }
 
-    func setupNavBar(_ navBarColor:CSNavBarColor)
+//    func setupNavBar(_ navBarColor:CSNavBarColor)
+//    {
+//        self.navigationBar.barTintColor = navBarColor.color
+//        self.navigationBar.isTranslucent = false
+//    }
+    
+    //--------------------------------------------------------------------------
+    func setupNavBar(options: LockerUIOptions)
     {
-        self.navigationBar.barTintColor = navBarColor.color
+        self.setupNavBar(backgroundColor: options.navBarColor, tintColor: options.navBarTintColor)
+    }
+    
+    //--------------------------------------------------------------------------
+    fileprivate func setupNavBar(backgroundColor: CSNavBarColor, tintColor: CSNavBarTintColor)
+    {
+        self.navigationBar.barTintColor  = backgroundColor.color
+        self.navigationBar.tintColor     = tintColor.color
         self.navigationBar.isTranslucent = false
     }
 
