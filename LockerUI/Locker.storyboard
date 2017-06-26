@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,8 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0J-cc-Ugw" userLabel="Background Image Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="620" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPi-Di-ZLr" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPi-Di-ZLr" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="620" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.074509803921568626" green="0.31372549019607843" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -32,8 +38,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ato-Tz-4z1" userLabel="Icon And Info View">
+                                <rect key="frame" x="140" y="20" width="280" height="196"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="lock-ok" translatesAutoresizingMaskIntoConstraints="NO" id="WuC-vU-q61" userLabel="Status Icon Image View" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="102.5" y="0.0" width="75" height="107"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="buF-9m-qRy"/>
@@ -41,11 +49,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1P5-k6-y7R" userLabel="Status Main Label">
+                                        <rect key="frame" x="0.0" y="114" width="280" height="33"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now you may select your preferred method of security" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUy-rd-1Dt" userLabel="Status Detail Label">
+                                        <rect key="frame" x="0.0" y="149" width="280" height="46.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,8 +76,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIc-mD-py7" userLabel="Button Base View">
+                                <rect key="frame" x="165" y="392" width="270" height="198"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XV-Mw-RER">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="42"/>
                                         <color key="backgroundColor" red="0.058823529411764705" green="0.3529411764705882" blue="0.55686274509803924" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="pin"/>
                                         <constraints>
@@ -84,6 +96,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPn-gG-oc1">
+                                        <rect key="frame" x="0.0" y="52" width="270" height="42"/>
                                         <color key="backgroundColor" red="0.058823529409999999" green="0.35294117650000001" blue="0.5568627451" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="fingerprint"/>
                                         <constraints>
@@ -100,6 +113,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5C-Y2-mFh">
+                                        <rect key="frame" x="0.0" y="104" width="270" height="42"/>
                                         <color key="backgroundColor" red="0.058823529409999999" green="0.35294117650000001" blue="0.5568627451" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="gesture"/>
                                         <constraints>
@@ -116,6 +130,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hX-DG-lxN">
+                                        <rect key="frame" x="0.0" y="156" width="270" height="42"/>
                                         <color key="backgroundColor" red="0.058823529409999999" green="0.35294117650000001" blue="0.5568627451" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="noauth"/>
                                         <constraints>
@@ -216,8 +231,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAM-eD-Qbb" userLabel="Background Image Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E5R-vd-rg0" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E5R-vd-rg0" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -228,14 +246,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3o-KU-LNl" userLabel="Info Base View">
+                                <rect key="frame" x="20" y="20" width="560" height="308"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-gesture" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-sE-UdZ" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="188" y="0.0" width="184" height="86"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="86" id="1Vi-ai-5S7"/>
                                             <constraint firstAttribute="width" constant="184" id="ARa-9P-dr6"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input your unlock gesture" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owr-Rh-oIY" userLabel="Info Main Label">
+                                        <rect key="frame" x="1" y="94" width="551" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="a97-Vk-NBz"/>
                                         </constraints>
@@ -244,6 +265,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At least 5 points must be selected" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-Oy-zzG" userLabel="Info Detail Label">
+                                        <rect key="frame" x="1" y="163" width="551" height="46.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="cJF-3C-lXg"/>
                                             <constraint firstAttribute="width" constant="430" id="j2e-Ql-M94"/>
@@ -260,6 +282,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IH4-w1-j8k" userLabel="Swap Views Button" customClass="SwapViewsButton" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="272" y="266" width="30" height="34"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
                                                 <color key="value" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -290,6 +313,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgZ-j9-Lcc" customClass="GestureLockView" customModule="CSLockerUI">
+                                <rect key="frame" x="170" y="340" width="260" height="260"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
                                     <bool key="isElement" value="YES"/>
@@ -376,8 +400,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utL-lW-dR7" userLabel="Background Image Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Zm-Bb-nBQ" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Zm-Bb-nBQ" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -388,18 +415,22 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4u8-oS-yAz" userLabel="Info Base View">
+                                <rect key="frame" x="20" y="10" width="560" height="116"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a new access code" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-gO-nfu" userLabel="Info Main Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Enter a new access code" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-gO-nfu" userLabel="Info Main Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="33.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Please enter your new access code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBI-qp-TDn" userLabel="Info Detail Label">
+                                        <rect key="frame" x="0.0" y="41.5" width="560" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cT-o6-5dF" customClass="PadSelectionView" customModule="CSLockerUI">
+                                        <rect key="frame" x="180" y="73" width="200" height="23"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Zdf-hv-qtq"/>
@@ -437,6 +468,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-3e-i6h" customClass="KeypadView" customModule="CSLockerUI">
+                                <rect key="frame" x="170" y="280" width="260" height="290"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="250" constant="290" id="WD2-dL-OqB"/>
@@ -497,9 +529,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t41-uS-kYV" userLabel="Background Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsc-22-ZYC" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsc-22-ZYC" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="icons-finger-ok" translatesAutoresizingMaskIntoConstraints="NO" id="2vk-2N-IhJ" userLabel="Status Icon Image View" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="241.5" y="80" width="117" height="117"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="Gb7-QJ-g8O"/>
@@ -552,13 +588,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hC1-hx-9Uq" userLabel="Background Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxi-O5-vXz" userLabel="Background Image View" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxi-O5-vXz" userLabel="Background Image View" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ch9-3s-hZd" userLabel="Spinner Base View">
+                                        <rect key="frame" x="200" y="200" width="200" height="200"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safelock-background" translatesAutoresizingMaskIntoConstraints="NO" id="m15-ab-1cP" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target"/>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safelock-spinner" translatesAutoresizingMaskIntoConstraints="NO" id="e4I-ny-0zN" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target"/>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safelock-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="zy6-uy-VzZ" userLabel="Overlay"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safelock-background" translatesAutoresizingMaskIntoConstraints="NO" id="m15-ab-1cP" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safelock-spinner" translatesAutoresizingMaskIntoConstraints="NO" id="e4I-ny-0zN" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safelock-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="zy6-uy-VzZ" userLabel="Overlay">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -579,11 +625,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilS-St-Qjw" userLabel="Info Label">
+                                        <rect key="frame" x="41" y="414" width="519" height="34.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fo-8D-9iL" userLabel="Info Detail Label">
+                                        <rect key="frame" x="40" y="455.5" width="520" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -610,15 +658,18 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="A8q-wx-CtQ"/>
                                         <exclude reference="8PR-pn-wVA"/>
                                         <exclude reference="sTg-4h-NFJ"/>
-                                        <exclude reference="A8q-wx-CtQ"/>
                                     </mask>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8z-DW-4I7" userLabel="Top Bar View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-csas" translatesAutoresizingMaskIntoConstraints="NO" id="kSn-XY-uab"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-csas" translatesAutoresizingMaskIntoConstraints="NO" id="kSn-XY-uab">
+                                        <rect key="frame" x="262" y="26" width="76" height="33"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -682,8 +733,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-F3-XSI" userLabel="Background Image Base View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yna-dz-Sqa" customClass="LockerBackgroundView" customModule="CSLockerUI"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yna-dz-Sqa" customClass="LockerBackgroundView" customModule="CSLockerUI">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -694,13 +748,16 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neighbor status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-GV-W4l" userLabel="App Name Label">
+                                <rect key="frame" x="40" y="52" width="520" height="38.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAZ-MJ-SRE" userLabel="Icon Base View">
+                                <rect key="frame" x="0.0" y="99.5" width="600" height="188"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-key" translatesAutoresizingMaskIntoConstraints="NO" id="ytr-ZZ-a7w" userLabel="Status Icon Image View" customClass="LockerImageView" customModule="CSLockerUI">
+                                        <rect key="frame" x="226" y="20" width="148" height="150"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                 </subviews>
@@ -712,6 +769,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="A2C-M8-LeP" userLabel="Status Main Label">
+                                <rect key="frame" x="40" y="293.5" width="520" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="nBi-zN-n6S"/>
                                 </constraints>
@@ -720,12 +778,14 @@
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="dSF-Sh-OL7" userLabel="Status Description Label">
+                                <rect key="frame" x="40" y="390.5" width="520" height="70"/>
                                 <string key="text">In order to use the Neighbor Status application, you need to register.  After entering client number and password, you can select authentication method.</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifc-pe-I2S" userLabel="Action Button" customClass="ShadowButton" customModule="CSLockerUI">
+                                <rect key="frame" x="30" y="524" width="540" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="kVs-WV-qR9"/>
@@ -793,8 +853,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jad-ZK-A3C" userLabel="Background Image Base View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MK7-3w-Cvc" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MK7-3w-Cvc" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -805,8 +868,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqp-S9-Mqu" userLabel="Info Base View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="278"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="yaZ-oR-eac" userLabel="Status Icon Image View" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="210" y="0.0" width="182" height="150"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="YMx-iq-7Mg"/>
@@ -814,11 +879,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCs-CI-n68" userLabel="Info Main Label">
+                                        <rect key="frame" x="40" y="154" width="520" height="34.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current authentication method is fingerprint." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmT-Ep-kF4" userLabel="Info Description Label">
+                                        <rect key="frame" x="40" y="196.5" width="520" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -838,6 +905,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr3-yK-06H" userLabel="First Action Button" customClass="ShadowButton" customModule="CSLockerUI" customModuleProvider="target">
+                                <rect key="frame" x="30" y="476" width="540" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="540" id="6si-5g-Lg7"/>
@@ -850,6 +918,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-fQ-MMr" userLabel="Second Action Button" customClass="ShadowButton" customModule="CSLockerUI" customModuleProvider="target">
+                                <rect key="frame" x="30" y="528" width="540" height="42"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="540" id="8yH-P5-UQT"/>
@@ -918,8 +987,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLp-mY-zRL" userLabel="Background Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZEf-4O-pdx" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZEf-4O-pdx" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -963,9 +1035,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sry-ji-qOc" userLabel="Background Base View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sry-ji-qOc" userLabel="Web Base View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Y0-jk3" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Y0-jk3" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -975,27 +1050,43 @@
                                     <constraint firstItem="EpC-Y0-jk3" firstAttribute="top" secondItem="sry-ji-qOc" secondAttribute="top" id="oW8-Id-F5o"/>
                                 </constraints>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XhC-a2-eDg"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oJ-ch-gvs" userLabel="Overlay View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fWw-YA-6yz">
+                                        <rect key="frame" x="281" y="281" width="37" height="37"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="fWw-YA-6yz" firstAttribute="centerY" secondItem="3oJ-ch-gvs" secondAttribute="centerY" id="clU-df-tR3"/>
+                                    <constraint firstItem="fWw-YA-6yz" firstAttribute="centerX" secondItem="3oJ-ch-gvs" secondAttribute="centerX" id="nFe-dy-ccw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XhC-a2-eDg" secondAttribute="trailing" id="34I-BU-3iU"/>
                             <constraint firstItem="MQG-U8-idL" firstAttribute="top" secondItem="sry-ji-qOc" secondAttribute="bottom" id="4ax-MO-tuU"/>
                             <constraint firstItem="sry-ji-qOc" firstAttribute="leading" secondItem="KTU-Fi-AkG" secondAttribute="leadingMargin" constant="-20" id="Ibd-GV-WtA"/>
-                            <constraint firstItem="XhC-a2-eDg" firstAttribute="top" secondItem="HIa-Fc-q61" secondAttribute="bottom" id="L0Z-rj-0Zw"/>
-                            <constraint firstItem="XhC-a2-eDg" firstAttribute="leading" secondItem="KTU-Fi-AkG" secondAttribute="leading" id="Wz4-Vv-I53"/>
+                            <constraint firstItem="3oJ-ch-gvs" firstAttribute="leading" secondItem="KTU-Fi-AkG" secondAttribute="leadingMargin" constant="-20" id="OWr-NU-szA"/>
+                            <constraint firstItem="MQG-U8-idL" firstAttribute="top" secondItem="3oJ-ch-gvs" secondAttribute="bottom" id="Uuf-ct-gTD"/>
                             <constraint firstItem="sry-ji-qOc" firstAttribute="top" secondItem="HIa-Fc-q61" secondAttribute="bottom" constant="-20" id="Z8Q-04-z8Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3oJ-ch-gvs" secondAttribute="trailing" constant="-20" id="i0o-4e-yDh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sry-ji-qOc" secondAttribute="trailing" constant="-20" id="lcv-lM-mhs"/>
+                            <constraint firstItem="3oJ-ch-gvs" firstAttribute="top" secondItem="HIa-Fc-q61" secondAttribute="bottom" constant="-20" id="sfx-7N-3a0"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
-                        <outlet property="backgroundBaseView" destination="EpC-Y0-jk3" id="G1g-uD-j7b"/>
+                        <outlet property="activityIndicator" destination="fWw-YA-6yz" id="NXi-ph-n7K"/>
+                        <outlet property="backgroundBaseView" destination="EpC-Y0-jk3" id="a8W-YW-IY4"/>
                         <outlet property="backgroundBottomConstraint" destination="G2L-fU-sVM" id="4fe-iS-7u3"/>
                         <outlet property="backgroundLeadingConstraint" destination="o2e-pO-NBB" id="Q1Q-RE-kHz"/>
                         <outlet property="backgroundTopConstraint" destination="oW8-Id-F5o" id="qIh-eQ-BR8"/>
                         <outlet property="backgroundTrailingConstraint" destination="HiH-i8-f9l" id="52n-hv-KU2"/>
-                        <outlet property="theProgressView" destination="XhC-a2-eDg" id="bfw-yq-Ezy"/>
+                        <outlet property="overlayView" destination="3oJ-ch-gvs" id="kzi-Hc-Y96"/>
+                        <outlet property="webBaseView" destination="sry-ji-qOc" id="JGO-Da-B0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRN-sN-7pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1015,9 +1106,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-4s-JOf" userLabel="Background Image Base View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJ7-s1-l39" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJ7-s1-l39" customClass="LockerBackgroundView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7n-fq-hG6" userLabel="Repeat Login Button" customClass="ShadowButton" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="459" width="540" height="42"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="540" id="aQS-2w-1lm"/>
@@ -1030,6 +1125,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N81-QS-kzb" userLabel="New Registration Button" customClass="ShadowButton" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="511" width="540" height="42"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="540" id="8ro-Oa-ROU"/>
@@ -1053,8 +1149,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hp5-6F-tuP" userLabel="Info Base View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="258"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="icons-finger-broken" translatesAutoresizingMaskIntoConstraints="NO" id="3fA-g8-cb9" userLabel="Status Icon Image View" customClass="LockerImageView" customModule="CSLockerUI" customModuleProvider="target">
+                                        <rect key="frame" x="243" y="16" width="117" height="117"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="117" id="HBA-v3-8Dt"/>
@@ -1062,11 +1160,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authentication failed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7P-OS-4dR" userLabel="Info Main Label">
+                                        <rect key="frame" x="40" y="144" width="520" height="34.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unfortunatelly, your fingerprint authentication failed." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWk-Fe-qL8" userLabel="Info Description Label">
+                                        <rect key="frame" x="40" y="186.5" width="520" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

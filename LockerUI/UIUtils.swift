@@ -37,6 +37,20 @@ extension UIColor {
         self.getHue(&oldH, saturation: &oldS, brightness: &oldB, alpha: &oldA)
         return UIColor.init(hue: oldH + hue, saturation: oldS + saturation, brightness: oldB + brightness, alpha: oldA)
     }
+    
+    func maxBright() -> UIColor
+    {
+        var r:CGFloat = 0.0
+        var g:CGFloat = 0.0
+        var b:CGFloat = 0.0
+        var a:CGFloat = 0.0
+        
+        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
+            let d:CGFloat = 1.0 - max(r,g,b)
+            return UIColor(red: r + d, green: g + d , blue: b + d, alpha: 1.0)
+        }
+        return self
+    }
 }
 
 //==============================================================================

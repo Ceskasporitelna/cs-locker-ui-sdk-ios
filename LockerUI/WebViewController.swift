@@ -14,7 +14,10 @@ import CSCoreSDK
 
 class WebViewController: LockerViewController {
     
-    @IBOutlet weak var theProgressView:UIProgressView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var webBaseView: UIView!
+    @IBOutlet weak var overlayView: UIView!
+    
     var theWebView:WKWebView
     
     var requestURL:URL!
@@ -47,7 +50,7 @@ class WebViewController: LockerViewController {
     {
         super.viewDidLoad()
         
-        self.view.insertSubview(self.theWebView, belowSubview: self.theProgressView)
+        self.webBaseView.addSubview(self.theWebView)
         self.theWebView.translatesAutoresizingMaskIntoConstraints = false
         
         let top = NSLayoutConstraint(item: self.theWebView,
@@ -78,6 +81,8 @@ class WebViewController: LockerViewController {
         // To support accessibility ...
         self.view.accessibilityTraits    = UIAccessibilityTraitAllowsDirectInteraction
         
+        self.overlayView.backgroundColor = LockerUI.internalSharedInstance.mainColor
+        self.activityIndicator.color     = LockerUI.internalSharedInstance.mainColor.maxBright()
     }
     
     override func didReceiveMemoryWarning()
@@ -93,10 +98,20 @@ class WebViewController: LockerViewController {
         self.theWebView.becomeFirstResponder()
     }
     
+    //--------------------------------------------------------------------------
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        self.activityIndicator.bringSubview(toFront: self.theWebView)
+    }
+    
     override func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillDisappear(animated)
         self.theWebView.removeObserver(self, forKeyPath: Constants.estimatedProgress)
+        if self.activityIndicator != nil && self.activityIndicator.isAnimating {
+            self.stopAnimating()
+        }
     }
     
     
@@ -130,19 +145,31 @@ class WebViewController: LockerViewController {
 //            let wkScript = WKUserScript(source: testingJS, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
 //            self.theWebView.configuration.userContentController.addUserScript(wkScript)
 //        }
+        self.activityIndicator.startAnimating()
+
         let request = URLRequest(url: requestURL)
         self.theWebView.load(request)
-        self.theProgressView.setProgress(0, animated: false)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
     {
         if keyPath == Constants.estimatedProgress {
-            theProgressView.isHidden = self.theWebView.estimatedProgress == 1
-            theProgressView.setProgress(Float(self.theWebView.estimatedProgress), animated: true)
+            if self.theWebView.estimatedProgress == 1 {
+                //self.activityIndicator.stopAnimating()
+            }
         }
     }
     
+    //--------------------------------------------------------------------------
+    func stopAnimating()
+    {
+        self.activityIndicator.stopAnimating()
+        UIView.animate(withDuration: 0.5,
+                       animations: { self.overlayView.alpha = 0.2 },
+                       completion: { _ in
+            self.overlayView.removeFromSuperview()
+        })
+    }
     
 }
 
@@ -198,8 +225,16 @@ extension WebViewController: WKNavigationDelegate{
     }
     
     //--------------------------------------------------------------------------
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error)
+    {
+        self.stopAnimating()
+    }
+    
+    //--------------------------------------------------------------------------
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
+        self.stopAnimating()
+        
         if let testingJS = self.testingJSForRegistration {//, !self.isTestingJSCodeInjected {
             self.isTestingJSCodeInjected = true
             clog(LockerUI.ModuleName, activityName: LockerUIActivities.UserRegistrationStarted.rawValue, fileName: #file, functionName: #function, lineNumber: #line, logLevel: LogLevel.debug, format: "Testing registration JS will be execuded: \(testingJS)" )
