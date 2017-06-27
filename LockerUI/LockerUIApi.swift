@@ -213,6 +213,9 @@ public enum ShowLogoOption: Int {
     - allowedLockTypes: An array of LockInfo allowed for application.
     - backgroundImage: LockerUI background image.
     - customTint: LockerUI background color. When set, the background image and icons will be colorized with this color.
+    - navBarTintColor: Navigation bar tint color.
+    - navBarColor: Navigation bar background color.
+    - showLogo: Determines when to show the logo in the navigation bar.
 */
 public struct LockerUIOptions
 {
