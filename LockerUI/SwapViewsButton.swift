@@ -100,7 +100,7 @@ import UIKit
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesBegan(touches, with: event)
-        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { _ in
+        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { 
             self.layer.borderColor     = self.selectedColor.cgColor
             self.buttonImageView.image = self.buttonImage.imageWithColor(self.selectedColor)
             self.isHighlighted           = true
@@ -111,7 +111,7 @@ import UIKit
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesEnded(touches, with: event)
-        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: { _ in
+        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: { 
             self.layer.borderColor     = self.borderColor.cgColor
             self.buttonImageView.image = self.buttonImage.imageWithColor(self.borderColor)
             self.isHighlighted           = false

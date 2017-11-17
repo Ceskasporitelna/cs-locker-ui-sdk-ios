@@ -1045,7 +1045,7 @@ public class LockerUI: NSObject, LockerUIApi
         
         repeatOrRegisterController.completion = { result in
             switch  result {
-            case .cancel(_):
+            case .cancel:
                 if self.locker.lockStatus == .unregistered {
                     self.registerUserWithCompletion() { result in
                         switch result {

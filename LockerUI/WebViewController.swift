@@ -139,7 +139,7 @@ class WebViewController: LockerViewController {
     
 
     
-    func makeUrlRequest()
+    @objc func makeUrlRequest()
     {
 //        if let testingJS = self.testingJSForRegistration {
 //            let wkScript = WKUserScript(source: testingJS, injectionTime: .atDocumentEnd, forMainFrameOnly: true)

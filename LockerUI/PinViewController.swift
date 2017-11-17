@@ -381,7 +381,7 @@ class PinViewController: LockerPasswordViewController
         let titleBack   = LockerUI.localized( "btn-pad-back" )
         let hintBack    = LockerUI.localized( "btn-pad-back-hint" )
         
-        let passwordNotEmpty = self.key.characters.count > 0
+        let passwordNotEmpty = !self.key.isEmpty
         
         switch self.dialogType {
         case .inputPasswordOnly, .inputOldPasswordOnly:
@@ -414,15 +414,15 @@ class PinViewController: LockerPasswordViewController
             self.respectCurrentUIHandOrientation()
             
         default: // delete or back button
-            if self.step == 1 && key.characters.count == 0 {
+            if self.step == 1 && key.isEmpty {
                 self.goBack()
             }
-            key = String(key.characters.dropLast())
+            key = String(key.dropLast())
         }
         
-        self.selectionView.value = key.characters.count
+        self.selectionView.value = key.count
         
-        if key.characters.count >= self.passwordLength! {
+        if key.count >= self.passwordLength! {
             self.didEnterKey(key)
         }
         
