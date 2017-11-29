@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   # s.resource  = "icon.png"
   #s.resources = "LockerUI/*.{xib,sotryboard,strings,xcassets,xcconfig,plist,modulemap}"
   s.resource_bundle = { 'CSLockerUI' => [
-        'LockerUI/*.{xib,storyboard,strings,xcconfig,plist,modulemap}',
+        'LockerUI/*.{xib,storyboard,strings,xcconfig,modulemap}',
         'LockerUI/*.lproj'
     ] }
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
