@@ -17,11 +17,10 @@ The LockerUI public API.
 /**
  * Determines, where are controls for the landscape UI orientation displayed.
  */
-public enum UIHandOrientation: Int {
+@objc public enum UIHandOrientation: Int {
     case right = 0
     case left  = 1
 }
-
 
 public protocol LockerUIApi
 {
@@ -39,6 +38,7 @@ public protocol LockerUIApi
      Sets the lockerUIOptions.
      - parameter options: LockerUIOptions to be set.
      */
+    @discardableResult
     func useLockerUIOptions( _ options: LockerUIOptions ) -> LockerUI
     
 
@@ -161,15 +161,16 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
     - minLength: The minimal password length. If the password length is less than minLength, an exception will be thrown.
     - maxLength: The maximal password length. If the password length is greater than maxLength, an exception will be thrown.
 */
-public struct LockInfo
+@objc public class LockInfo: NSObject
 {
     var lockType: LockType
     var length: UInt8
     
-    public init()
+    override public init()
     {
         self.lockType = LockType.pinLock
         self.length = 6
+        super.init()
     }
     
     public init( lockType: LockType )
@@ -183,12 +184,14 @@ public struct LockInfo
         default:
             self.length = 0
         }
+        super.init()
     }
     
     public init( lockType: LockType, length: UInt8 )
     {
         self.lockType = lockType
         self.length = length
+        super.init()
     }
 }
 
@@ -198,7 +201,7 @@ public struct LockInfo
  * - exceptRegistration: Logo is displayed everywhere besides WebView registration screen
  * - always: Logo is displayed on all screens
  */
-public enum ShowLogoOption: Int {
+@objc public enum ShowLogoOption: Int {
     case never               = 0
     case exceptRegistration  = 1
     case always              = 2

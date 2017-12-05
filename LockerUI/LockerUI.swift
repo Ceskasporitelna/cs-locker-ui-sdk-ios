@@ -128,10 +128,10 @@ public class LockerUI: NSObject, LockerUIApi
         }
     }
     
-//    public var supportedInterfaceOrientations : UIInterfaceOrientationMask
-//    {
-//        return UIInterfaceOrientationMask.All
-//    }
+    public var supportedInterfaceOrientations : UIInterfaceOrientationMask
+    {
+        return UIInterfaceOrientationMask.all
+    }
     
     
     class func getBundle() -> Bundle
@@ -408,6 +408,7 @@ public class LockerUI: NSObject, LockerUIApi
     
     //MARK: -
     //--------------------------------------------------------------------------
+    @discardableResult
     public func useLockerUIOptions( _ options: LockerUIOptions ) -> LockerUI
     {
         self.lockerUIOptions = options
