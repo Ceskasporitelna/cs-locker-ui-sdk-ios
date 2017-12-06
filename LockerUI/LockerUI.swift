@@ -496,7 +496,7 @@ public class LockerUI: NSObject, LockerUIApi
             }
         }
         
-        self.pushLockerUIController( statusController )
+        self.pushLockerUIController( statusController, animated: animated )
     }
     
     //MARK: -
