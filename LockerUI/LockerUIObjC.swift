@@ -72,7 +72,7 @@ import CSCoreSDK
             options.navBarTintColor = .custom(color: color)
         }
         
-        options.allowedLockTypes = [LockInfo(lockType: LockType.pinLock ), LockInfo(lockType: LockType.gestureLock), LockInfo(lockType: LockType.biometricLock), LockInfo(lockType: LockType.noLock)]
+        options.allowedLockTypes = allowedLockTypes
         
         LockerUI.sharedInstance.useLockerUIOptions(options)
         return self
