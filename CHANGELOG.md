@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## Added
+- ObjC compatibility
+
+## Fixed
+- XCode 9.2 compatibility
+
 ## [3.0.1] - 2017-11-29
 
 ## Fixed

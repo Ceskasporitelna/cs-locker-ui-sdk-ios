@@ -163,7 +163,7 @@ public class LockerUI: NSObject, LockerUIApi
     fileprivate static var _sharedInstance : LockerUI?
     
     internal class var internalSharedInstance : LockerUI{
-        return sharedInstance as! LockerUI
+        return sharedInstance
     }
     
     public var authFlowOptions: AuthFlowOptions {
