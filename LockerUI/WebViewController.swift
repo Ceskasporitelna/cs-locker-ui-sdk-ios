@@ -18,15 +18,15 @@ class WebViewController: LockerViewController {
     @IBOutlet weak var webBaseView: UIView!
     @IBOutlet weak var overlayView: UIView!
     
-    var theWebView:WKWebView
+    var theWebView: WKWebView
     
-    var requestURL:URL!
-    var lockerRedirectUrlPath:String!
+    var requestURL: URL!
+    var lockerRedirectUrlPath: String!
     var testingJSForRegistration: String?
     var isTestingJSCodeInjected = false
     
     override var shouldShowTitleLogo: Bool {
-        switch (LockerUI.internalSharedInstance.lockerUIOptions.showLogo) {
+        switch LockerUI.internalSharedInstance.lockerUIOptions.showLogo {
         case .always:
             return true
         case .exceptRegistration, .never:
@@ -34,20 +34,18 @@ class WebViewController: LockerViewController {
         }
     }
     
-    fileprivate struct Constants
-    {
+    fileprivate struct Constants {
         static let estimatedProgress = "estimatedProgress"
     }
     
-    required init(coder aDecoder: NSCoder)
-    {
+    required init(coder aDecoder: NSCoder) {
+        
         self.theWebView = WKWebView(frame: CGRect.zero)
         super.init(coder: aDecoder)
         self.theWebView.navigationDelegate = self
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.webBaseView.addSubview(self.theWebView)
@@ -85,29 +83,28 @@ class WebViewController: LockerViewController {
         self.activityIndicator.color     = LockerUI.internalSharedInstance.mainColor.maxBright()
     }
     
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.updateConstraintsWithScreenSize()
         self.theWebView.addObserver(self, forKeyPath: Constants.estimatedProgress, options: .new, context: nil)
         self.theWebView.becomeFirstResponder()
     }
     
     //--------------------------------------------------------------------------
-    override func viewDidAppear(_ animated: Bool)
-    {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.activityIndicator.bringSubview(toFront: self.theWebView)
     }
     
-    override func viewWillDisappear(_ animated: Bool)
-    {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         self.theWebView.removeObserver(self, forKeyPath: Constants.estimatedProgress)
         if self.activityIndicator != nil && self.activityIndicator.isAnimating {
             self.stopAnimating()
@@ -125,18 +122,17 @@ class WebViewController: LockerViewController {
     }
     
     //--------------------------------------------------------------------------
-    func updateConstraintsWithScreenSize()
-    {
-        if ( self.shouldShowTitleLogo ) {
-            if ( UIDevice.current.isLandscape && UIDevice.current.isPhone ) {
-                self.navigationItem.titleView                = UIImageView(image: self.imageNamed("logo-csas-landscape") )
+    func updateConstraintsWithScreenSize() {
+        
+        if self.shouldShowTitleLogo {
+            if UIDevice.current.isLandscape && UIDevice.current.isPhone {
+                self.navigationItem.titleView = UIImageView(image: self.imageNamed("logo-csas-landscape"))
             }
             else {
-                self.navigationItem.titleView                = UIImageView(image: self.imageNamed("logo-csas") )
+                self.navigationItem.titleView = UIImageView(image: self.imageNamed("logo-csas"))
             }
         }
     }
-    
 
     
     @objc func makeUrlRequest()
@@ -151,8 +147,8 @@ class WebViewController: LockerViewController {
         self.theWebView.load(request)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
-    {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
         if keyPath == Constants.estimatedProgress {
             if self.theWebView.estimatedProgress == 1 {
                 //self.activityIndicator.stopAnimating()
@@ -161,8 +157,8 @@ class WebViewController: LockerViewController {
     }
     
     //--------------------------------------------------------------------------
-    func stopAnimating()
-    {
+    func stopAnimating() {
+        
         guard activityIndicator != nil else {
             return
         }
@@ -174,35 +170,37 @@ class WebViewController: LockerViewController {
             self.overlayView.removeFromSuperview()
         })
     }
-    
 }
 
-extension WebViewController: WKNavigationDelegate{
+extension WebViewController: WKNavigationDelegate {
     
-    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
-    {
+    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
-        if CoreSDK.sharedInstance.environment.allowUntrustedCertificates{
-            if challenge.protectionSpace.serverTrust != nil {
-                let cred = URLCredential.init(trust: challenge.protectionSpace.serverTrust!)
+        if CoreSDK.sharedInstance.environment.allowUntrustedCertificates {
+            
+            if let trust = challenge.protectionSpace.serverTrust {
+                
+                // force unwrap fixed here - Michal
+                let cred = URLCredential.init(trust: trust)
                 completionHandler(.useCredential, cred)
-            }else{
+            } else {
                 completionHandler(.performDefaultHandling, nil)
             }
-        }else{
+        } else {
             completionHandler(.performDefaultHandling, nil)
         }
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
-    {
-        if let url = navigationAction.request.url{
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        if let url = navigationAction.request.url {
+            
             if url.absoluteString.hasPrefix(self.lockerRedirectUrlPath){
                 let locker = CoreSDK.sharedInstance.locker as! Locker
                 _ = locker.continueWithUserRegistrationUsingOAuth2Url(url)
                 decisionHandler(.cancel)
                 return
-            }else if navigationAction.targetFrame == nil {
+            } else if navigationAction.targetFrame == nil {
                 if UIApplication.shared.canOpenURL(url){
                     UIApplication.shared.openURL(url)
                     decisionHandler(.cancel)
@@ -214,8 +212,8 @@ extension WebViewController: WKNavigationDelegate{
     }
     
     //--------------------------------------------------------------------------
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void)
-    {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
         if let response = navigationResponse.response as? HTTPURLResponse {
             let coreError = CoreSDKError.errorWithCode(response.statusCode)!
             if ( coreError.isServerError || coreError.code == HttpStatusCodeNotFound ) {
@@ -229,14 +227,14 @@ extension WebViewController: WKNavigationDelegate{
     }
     
     //--------------------------------------------------------------------------
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error)
-    {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        
         self.stopAnimating()
     }
     
     //--------------------------------------------------------------------------
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
-    {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
         self.stopAnimating()
         
         if let testingJS = self.testingJSForRegistration {//, !self.isTestingJSCodeInjected {
@@ -253,4 +251,3 @@ extension WebViewController: WKNavigationDelegate{
         }
     }
 }
-
