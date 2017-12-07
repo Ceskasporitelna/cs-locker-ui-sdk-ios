@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.1.0] - 2017-12-07
+
 ## Added
 - ObjC compatibility
 
