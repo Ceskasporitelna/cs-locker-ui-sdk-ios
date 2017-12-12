@@ -123,7 +123,19 @@ class GesturePoint: UIView
     var selectedViews: [GesturePoint] = []
     var callback:      ((_ key: String) -> Void)?
     
-    @IBInspectable var matrixSize: Int = 3 {
+//    @IBInspectable var matrixSize: Int = 3 {
+//        didSet {
+//            refreshDots()
+//        }
+//    }
+    
+    @IBInspectable var matrixWidth: Int = 4 {
+        didSet {
+            refreshDots()
+        }
+    }
+    
+    @IBInspectable var matrixHeight: Int = 3 {
         didSet {
             refreshDots()
         }
@@ -164,8 +176,9 @@ class GesturePoint: UIView
         super.init(coder: aDecoder)
         
         let space   = self.dotSize * 0.875
-        let length  = CGFloat(self.matrixSize) * self.dotSize + CGFloat(self.matrixSize + 1) * space
-        self.bounds = CGRect(x:0.0, y:0.0, width: length, height: length)
+        let width   = CGFloat(self.matrixWidth) * self.dotSize + CGFloat(self.matrixWidth + 1) * space
+        let height  = CGFloat(self.matrixHeight) * self.dotSize + CGFloat(self.matrixHeight + 1) * space
+        self.bounds = CGRect(x:0.0, y:0.0, width: width, height: height)
         
         self.setupView()
     }
@@ -221,9 +234,19 @@ class GesturePoint: UIView
     
     //--------------------------------------------------------------------------
     func createDots(_ frame: CGRect) {
-        for i in 0..<matrixSize {
-            for j in 0..<matrixSize {
-                let index             = i * matrixSize + j
+        for i in 0..<matrixHeight {
+            for j in 0..<matrixWidth {
+                
+                var index = 0
+                
+                if matrixWidth > matrixHeight {
+                    index             = i * matrixWidth + j
+                }   else if matrixHeight > matrixWidth {
+                    index             = j * matrixHeight + i
+                } else {
+                    index             = i * matrixHeight + j
+                }
+                
                 let pt                = GesturePoint(frame: self.rectForDot(frame, index: index))
                 pt.index              = index
                 pt.normalColor        = self.dotColor.cgColor
@@ -245,15 +268,15 @@ class GesturePoint: UIView
     
     //--------------------------------------------------------------------------
     func rectForDot(_ rect: CGRect, index: Int) -> CGRect {
-        let w = frame.size.width  / CGFloat(matrixSize)
-        let h = frame.size.height / CGFloat(matrixSize)
+        let w = frame.size.width  / CGFloat(matrixWidth)
+        let h = frame.size.height / CGFloat(matrixHeight)
         
         let size  = dotSize
         let rect  = CGRect(x: 0, y: 0, width: size, height: size)
-        let i     = CGFloat(index / matrixSize)
-        let j     = CGFloat(index % matrixSize)
-        let x     = w * (i + 0.5) - 0.5 * size
-        let y     = h * (j + 0.5) - 0.5 * size
+        let i     = CGFloat(index / matrixHeight)
+        let j     = CGFloat(index % matrixHeight)
+        let x     = h * (i + 0.5) - 0.5 * size
+        let y     = w * (j + 0.5) - 0.5 * size
         let moved = rect.offsetBy(dx: x, dy: y)
         
         return moved

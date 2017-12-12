@@ -23,7 +23,7 @@ class BiometricsTypeManager {
         
         if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil),
             #available(iOS 11.0, *),
-            context.biometryType == LABiometryType.faceID {
+            context.biometryType == LABiometryType.typeFaceID {
 
                 return .faceID
             }
