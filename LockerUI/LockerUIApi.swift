@@ -163,8 +163,8 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
 */
 @objc public class LockInfo: NSObject
 {
-    var lockType: LockType
-    var length: UInt8
+    @objc var lockType: LockType
+    @objc var length: UInt8
     
     override public init()
     {
