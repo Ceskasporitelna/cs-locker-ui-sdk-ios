@@ -123,12 +123,6 @@ class GesturePoint: UIView
     var selectedViews: [GesturePoint] = []
     var callback:      ((_ key: String) -> Void)?
     
-//    @IBInspectable var matrixSize: Int = 3 {
-//        didSet {
-//            refreshDots()
-//        }
-//    }
-    
     @IBInspectable var matrixWidth: Int = 4 {
         didSet {
             refreshDots()
@@ -178,7 +172,7 @@ class GesturePoint: UIView
         let space   = self.dotSize * 0.875
         let width   = CGFloat(self.matrixWidth) * self.dotSize + CGFloat(self.matrixWidth + 1) * space
         let height  = CGFloat(self.matrixHeight) * self.dotSize + CGFloat(self.matrixHeight + 1) * space
-        self.bounds = CGRect(x:0.0, y:0.0, width: width, height: height)
+        self.bounds = CGRect(x:0.0, y:0.0, width: width * 0.75, height: height * 0.75)
         
         self.setupView()
     }
