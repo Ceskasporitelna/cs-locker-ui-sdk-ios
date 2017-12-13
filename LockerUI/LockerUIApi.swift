@@ -165,11 +165,28 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
 {
     var lockType: LockType
     var length: UInt8
+    var gestureGridWidth: Int {
+        didSet {
+            if self.gestureGridWidth > 5 {
+                self.gestureGridWidth = 5
+            }
+        }
+    }
+    
+    var gestureGridHeight: Int {
+        didSet {
+            if self.gestureGridWidth > 5 {
+                self.gestureGridWidth = 5
+            }
+        }
+    }
     
     override public init()
     {
         self.lockType = LockType.pinLock
         self.length = 6
+        self.gestureGridWidth = 4
+        self.gestureGridHeight = 4
         super.init()
     }
     
@@ -179,18 +196,37 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         switch lockType {
         case .pinLock:
             self.length = 6
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         case .gestureLock:
             self.length = 4
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         default:
             self.length = 0
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         }
         super.init()
     }
     
-    public init( lockType: LockType, length: UInt8 )
+    public init( lockType: LockType, length: UInt8, gestureGridWidth: Int, gestureGridHeight: Int)
     {
         self.lockType = lockType
         self.length = length
+        
+        if gestureGridWidth > 5 {
+            self.gestureGridWidth = 5
+        } else {
+            self.gestureGridWidth = gestureGridWidth
+        }
+        
+        if gestureGridHeight > 5 {
+            self.gestureGridHeight = 5
+        } else {
+            self.gestureGridHeight = gestureGridHeight
+        }
+
         super.init()
     }
 }

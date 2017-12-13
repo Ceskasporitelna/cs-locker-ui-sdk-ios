@@ -124,16 +124,16 @@ class GesturePoint: UIView
     var dotViews:      [GesturePoint] = [] // Only used for IB
     var selectedViews: [GesturePoint] = []
     var callback:      ((_ key: String) -> Void)?
-    
+
     // MARK: Outlets
-    
-    @IBInspectable var matrixWidth: Int = 4 {
+
+    var matrixWidth: Int = (LockerUI.sharedInstance.lockerUIOptions.allowedLockTypes.filter {( $0.lockType == .gestureLock)}).first?.gestureGridWidth ?? 4 {
         didSet {
             refreshDots()
         }
     }
-    
-    @IBInspectable var matrixHeight: Int = 3 {
+
+    var matrixHeight: Int = (LockerUI.sharedInstance.lockerUIOptions.allowedLockTypes.filter {( $0.lockType == .gestureLock)}).first?.gestureGridHeight ?? 4 {
         didSet {
             refreshDots()
         }
