@@ -165,18 +165,23 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
 {
     var lockType: LockType
     var length: UInt8
+    
     var gestureGridWidth: Int {
         didSet {
             if self.gestureGridWidth > 5 {
                 self.gestureGridWidth = 5
+            } else if self.gestureGridWidth < 3 {
+                self.gestureGridWidth = 3
             }
         }
     }
     
     var gestureGridHeight: Int {
         didSet {
-            if self.gestureGridWidth > 5 {
-                self.gestureGridWidth = 5
+            if self.gestureGridHeight > 5 {
+                self.gestureGridHeight = 5
+            } else if self.gestureGridHeight < 3 {
+                self.gestureGridHeight = 3
             }
         }
     }
@@ -217,12 +222,16 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         
         if gestureGridWidth > 5 {
             self.gestureGridWidth = 5
+        } else if gestureGridWidth < 3 {
+            self.gestureGridWidth = 3
         } else {
             self.gestureGridWidth = gestureGridWidth
         }
         
         if gestureGridHeight > 5 {
             self.gestureGridHeight = 5
+        } else if gestureGridHeight < 3 {
+            self.gestureGridHeight = 3
         } else {
             self.gestureGridHeight = gestureGridHeight
         }
