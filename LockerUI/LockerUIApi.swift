@@ -235,7 +235,17 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         } else {
             self.gestureGridHeight = gestureGridHeight
         }
-
+        
+        super.init()
+    }
+    
+    public init( lockType: LockType, length: UInt8)
+    {
+        self.lockType = lockType
+        self.length = length
+        self.gestureGridHeight = 4
+        self.gestureGridWidth = 4
+        
         super.init()
     }
 }
