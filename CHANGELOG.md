@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [3.2.0] - 2017-12-12
+
+## Fixed
+- XCode 9.2 compatibility
+
 ## [3.1.0] - 2017-12-07
 
 ## Added
