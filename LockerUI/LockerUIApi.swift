@@ -163,10 +163,10 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
 */
 @objc public class LockInfo: NSObject
 {
-    var lockType: LockType
-    var length: UInt8
+    @objc var lockType: LockType
+    @objc var length: UInt8
     
-    var gestureGridWidth: Int {
+    @objc var gestureGridWidth: Int {
         didSet {
             if self.gestureGridWidth > 5 {
                 self.gestureGridWidth = 5
@@ -176,7 +176,7 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         }
     }
     
-    var gestureGridHeight: Int {
+    @objc var gestureGridHeight: Int {
         didSet {
             if self.gestureGridHeight > 5 {
                 self.gestureGridHeight = 5
@@ -195,7 +195,7 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         super.init()
     }
     
-    public init( lockType: LockType )
+    @objc public init( lockType: LockType )
     {
         self.lockType = lockType
         switch lockType {
@@ -215,7 +215,7 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         super.init()
     }
     
-    public init( lockType: LockType, length: UInt8, gestureGridWidth: Int, gestureGridHeight: Int)
+    @objc public init( lockType: LockType, length: UInt8, gestureGridWidth: Int, gestureGridHeight: Int)
     {
         self.lockType = lockType
         self.length = length
@@ -239,7 +239,7 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         super.init()
     }
     
-    public init( lockType: LockType, length: UInt8)
+    @objc public init( lockType: LockType, length: UInt8 )
     {
         self.lockType = lockType
         self.length = length
