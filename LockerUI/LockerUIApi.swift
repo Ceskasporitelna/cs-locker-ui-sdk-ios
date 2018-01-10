@@ -166,10 +166,32 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
     @objc var lockType: LockType
     @objc var length: UInt8
     
+    @objc var gestureGridWidth: Int {
+        didSet {
+            if self.gestureGridWidth > 5 {
+                self.gestureGridWidth = 5
+            } else if self.gestureGridWidth < 3 {
+                self.gestureGridWidth = 3
+            }
+        }
+    }
+    
+    @objc var gestureGridHeight: Int {
+        didSet {
+            if self.gestureGridHeight > 5 {
+                self.gestureGridHeight = 5
+            } else if self.gestureGridHeight < 3 {
+                self.gestureGridHeight = 3
+            }
+        }
+    }
+    
     override public init()
     {
         self.lockType = LockType.pinLock
         self.length = 6
+        self.gestureGridWidth = 4
+        self.gestureGridHeight = 4
         super.init()
     }
     
@@ -179,11 +201,41 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
         switch lockType {
         case .pinLock:
             self.length = 6
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         case .gestureLock:
             self.length = 4
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         default:
             self.length = 0
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         }
+        super.init()
+    }
+    
+    @objc public init( lockType: LockType, length: UInt8, gestureGridWidth: Int, gestureGridHeight: Int)
+    {
+        self.lockType = lockType
+        self.length = length
+        
+        if gestureGridWidth > 5 {
+            self.gestureGridWidth = 5
+        } else if gestureGridWidth < 3 {
+            self.gestureGridWidth = 3
+        } else {
+            self.gestureGridWidth = gestureGridWidth
+        }
+        
+        if gestureGridHeight > 5 {
+            self.gestureGridHeight = 5
+        } else if gestureGridHeight < 3 {
+            self.gestureGridHeight = 3
+        } else {
+            self.gestureGridHeight = gestureGridHeight
+        }
+        
         super.init()
     }
     
@@ -191,6 +243,9 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
     {
         self.lockType = lockType
         self.length = length
+        self.gestureGridHeight = 4
+        self.gestureGridWidth = 4
+        
         super.init()
     }
 }
