@@ -49,6 +49,7 @@
 		506DB08C1CBBA3DE00B45430 /* WebSessionTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DB08B1CBBA3DE00B45430 /* WebSessionTimer.swift */; };
 		5073CF911C806F7B007A0FCD /* LockerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073CF901C806F7B007A0FCD /* LockerNavigationController.swift */; };
 		902A32C61F8E1C4F00E078D7 /* BiometricsTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902A32C51F8E1C4F00E078D7 /* BiometricsTypeManager.swift */; };
+		9042F7D81FB062ED007F830F /* LockerUIObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042F7D71FB062ED007F830F /* LockerUIObjC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		506DB08B1CBBA3DE00B45430 /* WebSessionTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSessionTimer.swift; sourceTree = "<group>"; };
 		5073CF901C806F7B007A0FCD /* LockerNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockerNavigationController.swift; sourceTree = "<group>"; };
 		902A32C51F8E1C4F00E078D7 /* BiometricsTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsTypeManager.swift; sourceTree = "<group>"; };
+		9042F7D71FB062ED007F830F /* LockerUIObjC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerUIObjC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				19B3A79B1BF72CB9001D2A76 /* LockerUI.swift */,
+				9042F7D71FB062ED007F830F /* LockerUIObjC.swift */,
 				19B3A7A11BF7329F001D2A76 /* LockerUI+ChangePassword.swift */,
 				1987EADF1BF9BF5C00DEDFC8 /* LockerUI+Data.swift */,
 				19B3A79F1BF72E2E001D2A76 /* LockerUI+UnlockOrRegister.swift */,
@@ -366,6 +369,7 @@
 				19C3FBE41C0648FC0013A3DC /* LockerUIApi.swift in Sources */,
 				19B3A78B1BF72BE8001D2A76 /* PadButton.swift in Sources */,
 				1987EAE01BF9BF5C00DEDFC8 /* LockerUI+Data.swift in Sources */,
+				9042F7D81FB062ED007F830F /* LockerUIObjC.swift in Sources */,
 				19B3A78D1BF72BE8001D2A76 /* SolidColorButton.swift in Sources */,
 				19B3A7A21BF7329F001D2A76 /* LockerUI+ChangePassword.swift in Sources */,
 				19B3A7871BF72BE8001D2A76 /* KeypadView.swift in Sources */,

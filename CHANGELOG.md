@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+## [3.3.0] - 2018-01-10
+
+## Added 
+- Add non-symmetric gesture grid compatibility
+
+## [3.2.0] - 2017-12-12
+
+## Fixed
+- XCode 9.2 compatibility
+
+## [3.1.0] - 2017-12-07
+
+## Added
+- ObjC compatibility
+
+## Fixed
+- XCode 9.2 compatibility
+
 ## [3.0.1] - 2017-11-29
 
 ## Fixed

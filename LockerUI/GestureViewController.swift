@@ -77,7 +77,7 @@ class GestureViewController: LockerPasswordViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+
         self.lastPassword           = nil
         self.newPassword            = nil
         

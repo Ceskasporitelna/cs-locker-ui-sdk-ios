@@ -17,11 +17,10 @@ The LockerUI public API.
 /**
  * Determines, where are controls for the landscape UI orientation displayed.
  */
-public enum UIHandOrientation: Int {
+@objc public enum UIHandOrientation: Int {
     case right = 0
     case left  = 1
 }
-
 
 public protocol LockerUIApi
 {
@@ -39,6 +38,7 @@ public protocol LockerUIApi
      Sets the lockerUIOptions.
      - parameter options: LockerUIOptions to be set.
      */
+    @discardableResult
     func useLockerUIOptions( _ options: LockerUIOptions ) -> LockerUI
     
 
@@ -145,8 +145,7 @@ public typealias UIUnlockCompletion = (( _ result: LockerUIDialogBoolResult ) ->
     - WhenNotRegistered: Skip the status screen only if the LockerStatus is Unregistered.
     - Never: Never skip the status screen.
 */
-public enum SkipStatusScreen: UInt8
-{
+@objc public enum SkipStatusScreen: UInt8 {
     case always = 0
     case whenLocked = 1
     case whenNotRegistered = 2
@@ -162,34 +161,92 @@ public enum SkipStatusScreen: UInt8
     - minLength: The minimal password length. If the password length is less than minLength, an exception will be thrown.
     - maxLength: The maximal password length. If the password length is greater than maxLength, an exception will be thrown.
 */
-public struct LockInfo
+@objc public class LockInfo: NSObject
 {
-    var lockType: LockType
-    var length: UInt8
+    @objc var lockType: LockType
+    @objc var length: UInt8
     
-    public init()
+    @objc var gestureGridWidth: Int {
+        didSet {
+            if self.gestureGridWidth > 5 {
+                self.gestureGridWidth = 5
+            } else if self.gestureGridWidth < 3 {
+                self.gestureGridWidth = 3
+            }
+        }
+    }
+    
+    @objc var gestureGridHeight: Int {
+        didSet {
+            if self.gestureGridHeight > 5 {
+                self.gestureGridHeight = 5
+            } else if self.gestureGridHeight < 3 {
+                self.gestureGridHeight = 3
+            }
+        }
+    }
+    
+    override public init()
     {
         self.lockType = LockType.pinLock
         self.length = 6
+        self.gestureGridWidth = 4
+        self.gestureGridHeight = 4
+        super.init()
     }
     
-    public init( lockType: LockType )
+    @objc public init( lockType: LockType )
     {
         self.lockType = lockType
         switch lockType {
         case .pinLock:
             self.length = 6
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         case .gestureLock:
             self.length = 4
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         default:
             self.length = 0
+            self.gestureGridWidth = 4
+            self.gestureGridHeight = 4
         }
+        super.init()
     }
     
-    public init( lockType: LockType, length: UInt8 )
+    @objc public init( lockType: LockType, length: UInt8, gestureGridWidth: Int, gestureGridHeight: Int)
     {
         self.lockType = lockType
         self.length = length
+        
+        if gestureGridWidth > 5 {
+            self.gestureGridWidth = 5
+        } else if gestureGridWidth < 3 {
+            self.gestureGridWidth = 3
+        } else {
+            self.gestureGridWidth = gestureGridWidth
+        }
+        
+        if gestureGridHeight > 5 {
+            self.gestureGridHeight = 5
+        } else if gestureGridHeight < 3 {
+            self.gestureGridHeight = 3
+        } else {
+            self.gestureGridHeight = gestureGridHeight
+        }
+        
+        super.init()
+    }
+    
+    @objc public init( lockType: LockType, length: UInt8 )
+    {
+        self.lockType = lockType
+        self.length = length
+        self.gestureGridHeight = 4
+        self.gestureGridWidth = 4
+        
+        super.init()
     }
 }
 
@@ -199,7 +256,7 @@ public struct LockInfo
  * - exceptRegistration: Logo is displayed everywhere besides WebView registration screen
  * - always: Logo is displayed on all screens
  */
-public enum ShowLogoOption: Int {
+@objc public enum ShowLogoOption: Int {
     case never               = 0
     case exceptRegistration  = 1
     case always              = 2
@@ -259,7 +316,6 @@ public enum CSNavBarColor{
             return color
         }
     }
-    
 }
 
 public enum CSNavBarTintColor {

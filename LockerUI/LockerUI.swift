@@ -128,10 +128,10 @@ public class LockerUI: NSObject, LockerUIApi
         }
     }
     
-//    public var supportedInterfaceOrientations : UIInterfaceOrientationMask
-//    {
-//        return UIInterfaceOrientationMask.All
-//    }
+    public var supportedInterfaceOrientations : UIInterfaceOrientationMask
+    {
+        return UIInterfaceOrientationMask.all
+    }
     
     
     class func getBundle() -> Bundle
@@ -144,14 +144,13 @@ public class LockerUI: NSObject, LockerUIApi
         }
     }
     
-    
     class func localized( _ string: String ) -> String
     {
         let localized =  NSLocalizedString( string, tableName: nil, bundle: LockerUI.getBundle(), value: "", comment: "")
         return localized
     }
     
-    public class var sharedInstance: LockerUIApi {
+    public class var sharedInstance: LockerUI {
         if let instance = _sharedInstance{
             return instance
         }else{
@@ -160,10 +159,11 @@ public class LockerUI: NSObject, LockerUIApi
             return instance
         }
     }
+    
     fileprivate static var _sharedInstance : LockerUI?
     
     internal class var internalSharedInstance : LockerUI{
-        return sharedInstance as! LockerUI
+        return sharedInstance
     }
     
     public var authFlowOptions: AuthFlowOptions {
@@ -408,6 +408,7 @@ public class LockerUI: NSObject, LockerUIApi
     
     //MARK: -
     //--------------------------------------------------------------------------
+    @discardableResult
     public func useLockerUIOptions( _ options: LockerUIOptions ) -> LockerUI
     {
         self.lockerUIOptions = options
@@ -495,7 +496,7 @@ public class LockerUI: NSObject, LockerUIApi
             }
         }
         
-        self.pushLockerUIController( statusController )
+        self.pushLockerUIController( statusController, animated: animated )
     }
     
     //MARK: -

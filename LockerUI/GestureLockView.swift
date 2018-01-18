@@ -43,7 +43,6 @@ class GesturePoint: UIView
         self.layer.shadowRadius = 5.0
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.6
-//        self.accessibilityElementsHidden = true
     }
     
     //--------------------------------------------------------------------------
@@ -114,7 +113,10 @@ class GesturePoint: UIView
 }
 
 //==============================================================================
+
 @IBDesignable class GestureLockView: UIView {
+    
+    // MARK: Properties
     
     static let LineWidth:CGFloat = 8.0
     
@@ -122,18 +124,22 @@ class GesturePoint: UIView
     var dotViews:      [GesturePoint] = [] // Only used for IB
     var selectedViews: [GesturePoint] = []
     var callback:      ((_ key: String) -> Void)?
-    
-    @IBInspectable var matrixSize: Int = 3 {
+
+    // MARK: Outlets
+
+    var matrixWidth: Int = (LockerUI.sharedInstance.lockerUIOptions.allowedLockTypes.filter {( $0.lockType == .gestureLock)}).first?.gestureGridWidth ?? 4 {
+        didSet {
+            refreshDots()
+        }
+    }
+
+    var matrixHeight: Int = (LockerUI.sharedInstance.lockerUIOptions.allowedLockTypes.filter {( $0.lockType == .gestureLock)}).first?.gestureGridHeight ?? 4 {
         didSet {
             refreshDots()
         }
     }
     
-    @IBInspectable var dotSize: CGFloat = 40.0 {
-        didSet {
-            refreshDots()
-        }
-    }
+    let dotSize: CGFloat = 40.0
     
     @IBInspectable var dotColor: UIColor = UIColor.init(hexString: "9D0019") {
         didSet {
@@ -153,30 +159,26 @@ class GesturePoint: UIView
         }
     }
     
-    //--------------------------------------------------------------------------
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
     }
-    
-    //--------------------------------------------------------------------------
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let space   = self.dotSize * 0.875
-        let length  = CGFloat(self.matrixSize) * self.dotSize + CGFloat(self.matrixSize + 1) * space
-        self.bounds = CGRect(x:0.0, y:0.0, width: length, height: length)
-        
+        self.bounds = CGRect(x: 0.0, y: 0.0, width: 260.0, height: 260.0)
         self.setupView()
     }
-    
-    //--------------------------------------------------------------------------
+
+    // MARK: View setup
     func setupView() {
         self.backgroundColor = UIColor.clear
         trackPoint = CGPoint(x: 0,y: 0)
     }
-    
-    //--------------------------------------------------------------------------
+
+    // MARK: Draw gesture
     override func draw(_ rect: CGRect) {
         if let point = self.trackPoint, !self.selectedViews.isEmpty {
             
@@ -212,26 +214,35 @@ class GesturePoint: UIView
         #endif
     }
     
-    //--------------------------------------------------------------------------
+    // MARK: Dots refresh
     func refreshDots() {
         _ = self.subviews.map({ $0.removeFromSuperview() })
         self.dotViews.removeAll()
         self.createDots(self.bounds)
     }
     
-    //--------------------------------------------------------------------------
+    // MARK: Dots creation
     func createDots(_ frame: CGRect) {
-        for i in 0..<matrixSize {
-            for j in 0..<matrixSize {
-                let index             = i * matrixSize + j
-                let pt                = GesturePoint(frame: self.rectForDot(frame, index: index))
+        
+        for i in 0..<matrixWidth{
+            for j in 0..<matrixHeight {
+                
+                var index = 0
+                
+                if matrixWidth > matrixHeight {
+                    index = i * matrixHeight + j
+                } else {
+                     index = j * matrixWidth + i
+                }
+                
+                let pt                = GesturePoint(frame: self.rectForDot(frame, index: index, j: CGFloat(j), i: CGFloat(i)))
                 pt.index              = index
                 pt.normalColor        = self.dotColor.cgColor
                 pt.selectedColor      = self.selectedDotColor.cgColor
                 #if !TARGET_INTERFACE_BUILDER
                     pt.gradientStartColor     = UIColor.white.cgColor
                     pt.gradientEndColor       = LockerUI.internalSharedInstance.lightColor.cgColor
-//                    pt.accessibilityLabel     = String( format: LockerUI.localized("fmt-gesture"), i % matrixSize + 1, j % matrixSize + 1 )
+                    //pt.accessibilityLabel     = String( format: LockerUI.localized("fmt-gesture"), i % matrixSize + 1, j % matrixSize + 1 )
                     addSubview(pt)
                 #else
                     dotViews.append(pt)
@@ -243,31 +254,28 @@ class GesturePoint: UIView
         }
     }
     
-    //--------------------------------------------------------------------------
-    func rectForDot(_ rect: CGRect, index: Int) -> CGRect {
-        let w = frame.size.width  / CGFloat(matrixSize)
-        let h = frame.size.height / CGFloat(matrixSize)
-        
+    func rectForDot(_ rect: CGRect, index: Int, j: CGFloat, i: CGFloat) -> CGRect {
+        let w = frame.size.width  / CGFloat(matrixWidth)
+        let h = frame.size.height / CGFloat(matrixHeight)
+
         let size  = dotSize
         let rect  = CGRect(x: 0, y: 0, width: size, height: size)
-        let i     = CGFloat(index / matrixSize)
-        let j     = CGFloat(index % matrixSize)
+
         let x     = w * (i + 0.5) - 0.5 * size
         let y     = h * (j + 0.5) - 0.5 * size
+        
         let moved = rect.offsetBy(dx: x, dy: y)
         
         return moved
     }
     
-    //--------------------------------------------------------------------------
     func addDotView(_ view: GesturePoint) {
         self.selectedViews.append(view)
         view.selected = true
         self.bringSubview(toFront: view)
         view.setNeedsDisplay()
     }
-    
-    //--------------------------------------------------------------------------
+
     func clearDotViews() {
         for view in self.selectedViews {
             view.selected = false
@@ -275,14 +283,12 @@ class GesturePoint: UIView
         }
         self.selectedViews.removeAll()
     }
-    
-    //--------------------------------------------------------------------------
+
     func drawLineFromLastDotTo(_ point: CGPoint) -> Void {
         trackPoint = point
         self.setNeedsDisplay()
     }
-    
-    //--------------------------------------------------------------------------
+
     func processTouches(_ touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.trackPoint = touches.first?.location(in: self)
         let touched = self.hitTest(self.trackPoint!, with: event)
@@ -293,28 +299,23 @@ class GesturePoint: UIView
         
         self.setNeedsDisplay()
     }
-    
-    //--------------------------------------------------------------------------
+
     override func layoutSubviews() {
         self.backgroundColor = UIColor.clear
     }
     
-    //--------------------------------------------------------------------------
     override var intrinsicContentSize : CGSize {
         return CGSize(width: 260, height: 260)
     }
 
-    //--------------------------------------------------------------------------
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.processTouches(touches, withEvent: event)
     }
-    
-    //--------------------------------------------------------------------------
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.processTouches(touches, withEvent: event)
     }
-    
-    //--------------------------------------------------------------------------
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let key = self.selectedViews.reduce("", {  $0 + String(format: "%02d", $1.index) })
         if let callback = self.callback {
@@ -324,5 +325,4 @@ class GesturePoint: UIView
         self.clearDotViews()
         self.setNeedsDisplay()
     }
-    
 }
