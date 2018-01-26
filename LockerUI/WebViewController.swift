@@ -43,6 +43,7 @@ class WebViewController: LockerViewController {
         self.theWebView = WKWebView(frame: CGRect.zero)
         super.init(coder: aDecoder)
         self.theWebView.navigationDelegate = self
+        self.theWebView.scrollView.delegate = self
     }
     
     override func viewDidLoad() {
@@ -250,4 +251,13 @@ extension WebViewController: WKNavigationDelegate {
             })
         }
     }
+}
+
+extension WebViewController: UIScrollViewDelegate {
+    
+    // disables zooming for `theWebView`
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+    
 }
