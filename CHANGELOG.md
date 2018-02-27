@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.3.1] - 2018-02-27
+
 ## Fixed
 - Zooming in WebViewController disabled
 - Logo of CSAS
