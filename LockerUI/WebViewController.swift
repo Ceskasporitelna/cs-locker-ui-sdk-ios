@@ -142,7 +142,7 @@ class WebViewController: LockerViewController {
 //            let wkScript = WKUserScript(source: testingJS, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
 //            self.theWebView.configuration.userContentController.addUserScript(wkScript)
 //        }
-        self.activityIndicator.startAnimating()
+        self.startAnimating()
 
         let request = URLRequest(url: requestURL)
         self.theWebView.load(request)
@@ -158,9 +158,18 @@ class WebViewController: LockerViewController {
     }
     
     //--------------------------------------------------------------------------
+    func startAnimating()
+    {
+        guard self.activityIndicator != nil else {
+            return
+        }
+        self.activityIndicator.startAnimating()
+    }
+    
+    //--------------------------------------------------------------------------
     func stopAnimating() {
         
-        guard activityIndicator != nil else {
+        guard self.activityIndicator != nil else {
             return
         }
         
