@@ -179,6 +179,13 @@ extension LockerUI
     // MARK: - 3) Choose the LockType
     fileprivate func proceedUserRegistrationWithCompletion( _ completion : @escaping RegistrationCompletion )
     {
+        // When `.noLock` is the only option, skip this choice ...
+        let lockerTypes = self.lockerUIOptions.allowedLockTypes
+        if lockerTypes.count == 1 && lockerTypes [0].lockType == .noLock {
+            self.registerUserWithLockType(.noLock, completion: completion)
+            return
+        }
+        
         let inputTypeController = self.viewControllerWithName( LockerUI.InputTypeSceneName ) as! InputTypeViewController
         inputTypeController.lockerUIOptions = self.lockerUIOptions
         inputTypeController.lockerViewOptions = self.authFlowOptions.hideCancelButton ? LockerViewOptions.showNoButton.rawValue : LockerViewOptions.showCancelButton.rawValue
