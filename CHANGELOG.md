@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.3.2] - 2018-04-10
+
 ## Added
 - skip selection if noLock is the only option
 
