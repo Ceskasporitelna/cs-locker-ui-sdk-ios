@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## Added
+- skip selection if noLock is the only option
+
+## Fixed
+- Login Webview refresh null pointer exception
+
 ## [3.3.1] - 2018-02-27
 
 ## Fixed
