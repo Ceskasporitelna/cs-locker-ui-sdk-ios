@@ -4,10 +4,6 @@
 
 ### Fixed
 - (TOOLING) Update tooling to remove potential vulnerability
-
-## [3.3.3] - 2018-04-28
-
-### Fixed
 - XCode 9.3 compatibility
 
 ## [3.3.2] - 2018-04-10
