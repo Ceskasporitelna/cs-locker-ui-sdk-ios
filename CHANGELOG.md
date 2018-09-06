@@ -2,74 +2,77 @@
 
 ## [Unreleased]
 
+### Fixed
+- (TOOLING) Update tooling to remove potential vulnerability
+
 ## [3.3.3] - 2018-04-28
 
-## Fixed
+### Fixed
 - XCode 9.3 compatibility
 
 ## [3.3.2] - 2018-04-10
 
-## Added
+### Added
 - skip selection if noLock is the only option
 
-## Fixed
+### Fixed
 - Login Webview refresh null pointer exception
 
 ## [3.3.1] - 2018-02-27
 
-## Fixed
+### Fixed
 - Zooming in WebViewController disabled
 - Logo of CSAS
 
 ## [3.3.0] - 2018-01-10
 
-## Added 
+### Added 
 - Add non-symmetric gesture grid compatibility
 
 ## [3.2.0] - 2017-12-12
 
-## Fixed
+### Fixed
 - XCode 9.2 compatibility
 
 ## [3.1.0] - 2017-12-07
 
-## Added
+### Added
 - ObjC compatibility
 
-## Fixed
+### Fixed
 - XCode 9.2 compatibility
 
 ## [3.0.1] - 2017-11-29
 
-## Fixed
+### Fixed
 - XCode New Build System compatibility
 
 ## [3.0.0] - 2017-11-27
 
-## Fixed 
+### Fixed 
 - Swift 4 migration
 
 ## [2.0.0] - 2017-10-19
 
-## Added
+### Added
 - Support for FaceID (generally Biometrics)
 
 ## [1.0.2] - 2017-07-03
 
-## Fixed 
+### Fixed 
 - AuthFlowOptions are no longer ignored in startAuthenticationFlow( options:, completion:)
 
 ## [1.0.1] - 2017-06-28
 
-## Added
+### Added
 - Customized navigation bar color and ting
 - Loading indicator in OAuth flow
 
-## Fixed
+### Fixed
 - Readme for skip status screen
 
 ## [1.0.0] - 2017-05-06
 - Public release
 
-## Changed
+### Changed
 - The `.sharedInstance` only exposes public interface of the SDK now
