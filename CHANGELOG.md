@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Fixed
+- XCode 10 compatibility
+
+### Added
+- Skip EA selection screen when only one EA is allowed
+
 ## [3.3.3] - 2018-09-06
 
 ### Fixed
