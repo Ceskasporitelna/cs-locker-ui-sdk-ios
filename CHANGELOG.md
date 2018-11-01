@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.3.4] - 2018-11-01
+
 ### Fixed
 - XCode 10 compatibility
 
