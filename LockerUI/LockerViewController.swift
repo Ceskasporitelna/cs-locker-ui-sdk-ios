@@ -125,9 +125,9 @@ class LockerViewController: UIViewController
     {
         super.viewDidAppear(animated)
         if let voiceOverView = self.defaultAccessibilityView {
-            if UIAccessibilityIsVoiceOverRunning() {
+            if UIAccessibility.isVoiceOverRunning {
                 DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + Double(Int64( 1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
-                    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, voiceOverView)
+                    UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: voiceOverView)
                 })
             }
         }
@@ -148,7 +148,7 @@ class LockerViewController: UIViewController
     //MARK: -
     func createBarButtonSpace(_ size: CGFloat) -> UIBarButtonItem
     {
-        let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
         item.width = size
         return item
     }
@@ -166,8 +166,8 @@ class LockerViewController: UIViewController
             let newImage = image.imageWithColor(color)
             button.frame = CGRect( x: 0, y: 0, width: newImage.size.width, height: newImage.size.height )
             
-            button.setImage(newImage, for: UIControlState() )
-            button.addTarget(self, action: action, for: UIControlEvents.touchUpInside )
+            button.setImage(newImage, for: UIControl.State() )
+            button.addTarget(self, action: action, for: UIControl.Event.touchUpInside )
             
             return UIBarButtonItem(customView: button )
         } else {
@@ -179,10 +179,10 @@ class LockerViewController: UIViewController
     func colorNavButtons()
     {
         for button in [self.backButton, self.cancelButton] where button != nil {
-            let oldImage = button?.image(for: UIControlState())
+            let oldImage = button?.image(for: UIControl.State())
             let color = LockerUI.internalSharedInstance.lockerUIOptions.navBarTintColor.color
             let newImage = oldImage?.imageWithColor(color)
-            button?.setImage(newImage, for: UIControlState())
+            button?.setImage(newImage, for: UIControl.State())
         }
     }
     
@@ -201,7 +201,7 @@ class LockerViewController: UIViewController
     func shakeViewForError(_ view: UIView)
     {
         view.transform = CGAffineTransform(translationX: 20, y: 0)
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.2, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.2, options: UIView.AnimationOptions(), animations: { () -> Void in
             view.transform = CGAffineTransform.identity
             }, completion: nil)
     }
@@ -210,9 +210,9 @@ class LockerViewController: UIViewController
     //MARK: -
     func adjustUISettingsForDarkButton( _ button: UIButton )
     {
-        button.setBackgroundColor(LockerUI.internalSharedInstance.darkColor, forUIControlState: UIControlState())
+        button.setBackgroundColor(LockerUI.internalSharedInstance.darkColor, forUIControlState: UIControl.State())
         button.setBackgroundColor(LockerUI.internalSharedInstance.darkColor.colorWithHSB(0, saturation: 0, brightness: -11/255), forUIControlState: .highlighted)
-        button.setTitleColor(UIColor.white, for: UIControlState())
+        button.setTitleColor(UIColor.white, for: UIControl.State())
         button.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .highlighted)
         button.layer.cornerRadius = 5.0
         button.layer.masksToBounds = true
@@ -220,14 +220,14 @@ class LockerViewController: UIViewController
     
     func adjustUISettingsForWhiteButton( _ button: ShadowButton )
     {
-        button.setTitleColor(LockerUI.internalSharedInstance.mainColor, for: UIControlState())
+        button.setTitleColor(LockerUI.internalSharedInstance.mainColor, for: UIControl.State())
         button.buttonColor = UIColor.white
         button.shadowColor = LockerUI.internalSharedInstance.lightColor
     }
     
     func adjustUISettingsForRedButton( _ button: ShadowButton )
     {
-        button.setTitleColor(UIColor.white, for: UIControlState())
+        button.setTitleColor(UIColor.white, for: UIControl.State())
         button.buttonColor = UIColor(red: 0.93, green: 0.13, blue: 0.11, alpha: 1.0)
         button.shadowColor = UIColor(red: 0.69, green: 0.08, blue: 0.11, alpha: 1.0 )
     }

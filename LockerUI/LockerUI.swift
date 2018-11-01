@@ -419,9 +419,9 @@ public class LockerUI: NSObject, LockerUIApi
     func showAlertWithError( _ error: NSError, completion: (() -> ())? )
     {
         DispatchQueue.main.async(execute: {
-            let alert = UIAlertController(title: LockerUI.localized( "title-error" ), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert )
+            let alert = UIAlertController(title: LockerUI.localized( "title-error" ), message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert )
             let alertCompletion: ((UIAlertAction) -> Void)? = ( completion != nil ? { action in completion!() } : nil )
-            alert.addAction( UIAlertAction(title: LockerUI.localized( "btn-cancel" ), style: UIAlertActionStyle.cancel, handler: alertCompletion ))
+            alert.addAction( UIAlertAction(title: LockerUI.localized( "btn-cancel" ), style: UIAlertAction.Style.cancel, handler: alertCompletion ))
             
             if let topViewController = UIApplication.topViewController() {
                 topViewController.present( alert, animated: false, completion: nil )

@@ -67,7 +67,7 @@ import UIKit
     //--------------------------------------------------------------------------
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { () -> Void in
+        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIView.KeyframeAnimationOptions(), animations: { () -> Void in
             self.selectedView.alpha = 1
             self.isHighlighted        = true
             }, completion: nil)
@@ -76,7 +76,7 @@ import UIKit
     //--------------------------------------------------------------------------
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: { () -> Void in
+        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIView.KeyframeAnimationOptions.allowUserInteraction, animations: { () -> Void in
             self.selectedView.alpha = 0
             self.isHighlighted        = false
             }, completion: nil)

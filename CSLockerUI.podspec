@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name         = "CSLockerUI"
   s.version      = "3.3.3"
   s.source       = {:tag => "v#{s.version}", :git => "https://github.com/Ceskasporitelna/cs-locker-ui-sdk-ios.git" }
-  s.dependency   "CSCoreSDK", "~> 2.0"
+  s.dependency   "CSCoreSDK", "~> 2.3.2"
   s.summary      = "User interface for Locker from CSCoreSDK"
   s.description  = "UI wrapper for Locker functionality over Locker from CoreSDK"
   s.homepage     = "https://developers.csas.cz"
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.authors      = { "WebApi team" => "webapi@csas.cz" }
   s.social_media_url   = "https://twitter.com/csas_devs"
   s.platform     = :ios
-  s.platform     = :ios, "9.2"
+  s.platform     = :ios, "10"
   s.source_files  =  "LockerUI/*.{swift,h,m}"
   #s.exclude_files = "Classes/Exclude"
 

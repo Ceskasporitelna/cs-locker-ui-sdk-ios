@@ -143,7 +143,7 @@ import UIKit
         self.view                              = self.loadViewFromNib()
         
         self.view.frame                        = self.bounds
-        self.view.autoresizingMask             = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        self.view.autoresizingMask             = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         self.addSubview(self.view)
         
         self.deleteButton.textColor            = self.buttonTextColor

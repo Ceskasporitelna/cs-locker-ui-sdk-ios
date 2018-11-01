@@ -89,7 +89,7 @@ extension LockerUI
                 self.lockerWaitWindow = UIWindow( frame: UIScreen.main.bounds )
                 self.lockerWaitWindow?.rootViewController = self.waitController
                 self.lockerWaitWindow?.makeKeyAndVisible()
-                self.lockerWaitWindow?.windowLevel = 1.2
+                self.lockerWaitWindow?.windowLevel = UIWindow.Level(rawValue: 1.2)
                 self.lockerWaitWindow?.alpha = 0.0
                 
                 UIView.animate(withDuration: 0.3, animations: {
@@ -138,7 +138,7 @@ extension LockerUI
                     self.lockerUIWindow?.isHidden = false
                     self.lockerUIWindow?.makeKeyAndVisible()
                     self.lockerUIWindow?.alpha = ( animated ? 0.0 : 1.0 )
-                    self.lockerUIWindow?.windowLevel = 1.2
+                    self.lockerUIWindow?.windowLevel = UIWindow.Level(rawValue: 1.2)
                     
                     if ( animated ) {
                         UIView.animate( withDuration: 0.5,

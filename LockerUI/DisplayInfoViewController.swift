@@ -47,8 +47,8 @@ class DisplayInfoViewController: LockerViewController
         self.infoMainLabel.text = LockerUI.localized( "info-settings" )
         self.infoDescriptionLabel.text = String( format: LockerUI.localized( "info-settings-description-format" ), lockType.toString() )
         
-        self.firstActionButton.setTitle( LockerUI.localized("btn-change-security"), for: UIControlState() )
-        self.secondActionButton.setTitle( LockerUI.localized("btn-unregister"), for: UIControlState() )
+        self.firstActionButton.setTitle( LockerUI.localized("btn-change-security"), for: UIControl.State() )
+        self.secondActionButton.setTitle( LockerUI.localized("btn-unregister"), for: UIControl.State() )
         
         self.adjustUISettingsForWhiteButton( self.firstActionButton )
         self.adjustUISettingsForRedButton( self.secondActionButton )
@@ -144,9 +144,9 @@ class DisplayInfoViewController: LockerViewController
     
     @IBAction func secondButtonAction(_ sender: UIButton)
     {
-        let alert = UIAlertController(title: LockerUI.localized( "title-unregister" ), message: options?.unregisterPromptText, preferredStyle: UIAlertControllerStyle.alert )
-        alert.addAction( UIAlertAction(title: LockerUI.localized( "btn-cancel" ), style: UIAlertActionStyle.default, handler: nil ))
-        alert.addAction( UIAlertAction(title: LockerUI.localized( "btn-ok" ), style: UIAlertActionStyle.destructive, handler: { action in
+        let alert = UIAlertController(title: LockerUI.localized( "title-unregister" ), message: options?.unregisterPromptText, preferredStyle: UIAlertController.Style.alert )
+        alert.addAction( UIAlertAction(title: LockerUI.localized( "btn-cancel" ), style: UIAlertAction.Style.default, handler: nil ))
+        alert.addAction( UIAlertAction(title: LockerUI.localized( "btn-ok" ), style: UIAlertAction.Style.destructive, handler: { action in
             self.secondCompletion?( lockerUIDialogResultOk() )
         }))
         self.present(alert, animated: false, completion: nil )
