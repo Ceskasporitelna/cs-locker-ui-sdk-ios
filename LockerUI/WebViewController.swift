@@ -72,13 +72,13 @@ class WebViewController: LockerViewController {
         self.makeUrlRequest()
         
         if self.lockerViewOptions == LockerViewOptions.showNoButton.rawValue {
-            let reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action:#selector(WebViewController.makeUrlRequest))
+            let reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action:#selector(WebViewController.makeUrlRequest))
             reloadButton.tintColor = LockerUI.internalSharedInstance.mainColor
             self.navigationItem.rightBarButtonItem = reloadButton
         }
         
         // To support accessibility ...
-        self.view.accessibilityTraits    = UIAccessibilityTraitAllowsDirectInteraction
+        self.view.accessibilityTraits    = UIAccessibilityTraits.allowsDirectInteraction
         
         self.overlayView.backgroundColor = LockerUI.internalSharedInstance.mainColor
         self.activityIndicator.color     = LockerUI.internalSharedInstance.mainColor.maxBright()
@@ -100,7 +100,7 @@ class WebViewController: LockerViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.activityIndicator.bringSubview(toFront: self.theWebView)
+        self.activityIndicator.bringSubviewToFront(self.theWebView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

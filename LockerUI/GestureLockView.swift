@@ -272,7 +272,7 @@ class GesturePoint: UIView
     func addDotView(_ view: GesturePoint) {
         self.selectedViews.append(view)
         view.selected = true
-        self.bringSubview(toFront: view)
+        self.bringSubviewToFront(view)
         view.setNeedsDisplay()
     }
 

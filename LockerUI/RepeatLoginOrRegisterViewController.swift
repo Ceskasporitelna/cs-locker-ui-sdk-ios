@@ -56,8 +56,8 @@ class RepeatLoginOrRegisterViewController: LockerViewController
         }
         self.infoMainLabel.text        = LockerUI.localized("info-user-login-failed")
         
-        self.firstActionButton.setTitle( LockerUI.localized("btn-repeat"), for: UIControlState() )
-        self.secondActionButton.setTitle( LockerUI.localized("btn-new-registration"), for: UIControlState() )
+        self.firstActionButton.setTitle( LockerUI.localized("btn-repeat"), for: UIControl.State() )
+        self.secondActionButton.setTitle( LockerUI.localized("btn-new-registration"), for: UIControl.State() )
         
         self.adjustUISettingsForWhiteButton( self.firstActionButton )
         self.adjustUISettingsForRedButton( self.secondActionButton )

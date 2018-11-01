@@ -92,7 +92,7 @@ import UIKit
             let delta: CGFloat                      = round((self.size - pictureSize)/2.0)
             self.buttonImageView.frame              = CGRect(x: delta, y: delta, width: self.size - 2.0 * delta, height: self.size - 2.0 * delta)
             self.addSubview(self.buttonImageView)
-            self.bringSubview(toFront: self.buttonImageView)
+            self.bringSubviewToFront(self.buttonImageView)
         }
     }
     
@@ -100,7 +100,7 @@ import UIKit
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesBegan(touches, with: event)
-        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { 
+        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIView.KeyframeAnimationOptions(), animations: { 
             self.layer.borderColor     = self.selectedColor.cgColor
             self.buttonImageView.image = self.buttonImage.imageWithColor(self.selectedColor)
             self.isHighlighted           = true
@@ -111,7 +111,7 @@ import UIKit
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesEnded(touches, with: event)
-        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: { 
+        UIView.animateKeyframes(withDuration: animationDuration, delay: 0, options: UIView.KeyframeAnimationOptions.allowUserInteraction, animations: { 
             self.layer.borderColor     = self.borderColor.cgColor
             self.buttonImageView.image = self.buttonImage.imageWithColor(self.borderColor)
             self.isHighlighted           = false

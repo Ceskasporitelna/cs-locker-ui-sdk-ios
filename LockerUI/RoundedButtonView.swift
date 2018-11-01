@@ -37,9 +37,9 @@ import UIKit
         view = loadViewFromNib()
         
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
                addSubview(view)
-        self.sendSubview(toBack: view)
+        self.sendSubviewToBack(view)
         
         self.layer.cornerRadius  = 10.0
         self.layer.shadowColor   = UIColor.black.cgColor
@@ -47,8 +47,8 @@ import UIKit
         self.layer.shadowRadius  = 10.0
         self.layer.shadowOffset  = CGSize.init(width: 3.0, height: 3.0)
         
-        self.button.setBackgroundColor(self.button.backgroundColor!, forUIControlState: UIControlState())
-        self.button.setBackgroundColor(buttonSelectedBackgroundColor, forUIControlState: UIControlState.selected)
+        self.button.setBackgroundColor(self.button.backgroundColor!, forUIControlState: UIControl.State())
+        self.button.setBackgroundColor(buttonSelectedBackgroundColor, forUIControlState: UIControl.State.selected)
     }
     
     //--------------------------------------------------------------------------
@@ -76,7 +76,7 @@ import UIKit
             return self.button.titleLabel?.text
         }
         set(text) {
-            self.button.setTitle(text, for: UIControlState())
+            self.button.setTitle(text, for: UIControl.State())
         }
     }
 }

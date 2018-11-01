@@ -112,7 +112,7 @@ class StatusViewController: LockerViewController
             self.appNameLabel.text = options.appName
             self.statusMainLabel.text = options.statusMainText
             self.statusDescriptionLabel.text = options.statusDescriptionText
-            self.actionButton.setTitle( options.actionCaption, for: UIControlState() )
+            self.actionButton.setTitle( options.actionCaption, for: UIControl.State() )
             
             self.statusIcon.image        = self.imageNamed(options.statusIconName)
             if let tint                  = self.backgroundTint {

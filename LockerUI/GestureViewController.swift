@@ -248,7 +248,7 @@ class GestureViewController: LockerPasswordViewController
                 UIView.animate(withDuration: animationDuration,
                     animations: {
                         for subView in self.infoBaseView.subviews {
-                            self.gestureLockView.bringSubview(toFront: subView)
+                            self.gestureLockView.bringSubviewToFront(subView)
                         }
                         self.activateConstraintsWithRespectToCurrentUIHandOrientation()
                         self.gestureViewTrailingConstraint.constant = self.rightGestureViewLandscapeConstraint
@@ -260,7 +260,7 @@ class GestureViewController: LockerPasswordViewController
                 UIView.animate(withDuration: animationDuration,
                     animations: {
                         for subView in self.infoBaseView.subviews {
-                            self.gestureLockView.bringSubview(toFront: subView)
+                            self.gestureLockView.bringSubviewToFront(subView)
                         }
                         self.activateConstraintsWithRespectToCurrentUIHandOrientation()
                         self.gestureViewLeadingConstraint.constant   = self.leftGestureViewLandscapeConstraint

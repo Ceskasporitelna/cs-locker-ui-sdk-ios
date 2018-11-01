@@ -31,10 +31,10 @@ import UIKit
     func setupView()
     {
         if let backgroundColor = self.backgroundColor {
-            self.setBackgroundColor(backgroundColor, forUIControlState: UIControlState())
+            self.setBackgroundColor(backgroundColor, forUIControlState: UIControl.State())
         }
         if let selectedBackgroundColor = self.selectedBackgroundColor {
-            self.setBackgroundColor(selectedBackgroundColor, forUIControlState: UIControlState.selected)
+            self.setBackgroundColor(selectedBackgroundColor, forUIControlState: UIControl.State.selected)
         }
     }
 }

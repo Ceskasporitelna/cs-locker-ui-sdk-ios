@@ -68,20 +68,20 @@ class InputTypeViewController: LockerViewController
         
         self.statusMainLabel.text = LockerUI.localized( "info-security" )
         self.statusDescriptionLabel.text = LockerUI.localized( "info-security-description" )
-        self.pinButton.setTitle(LockerUI.localized( "btn-use-pin"), for: UIControlState())
-        self.gestureButton.setTitle( LockerUI.localized( "btn-use-gesture"), for: UIControlState())
-        self.noAuthButton.setTitle(LockerUI.localized( "btn-without-security"), for: UIControlState())
+        self.pinButton.setTitle(LockerUI.localized( "btn-use-pin"), for: UIControl.State())
+        self.gestureButton.setTitle( LockerUI.localized( "btn-use-gesture"), for: UIControl.State())
+        self.noAuthButton.setTitle(LockerUI.localized( "btn-without-security"), for: UIControl.State())
         self.statusIcon.image = self.imageNamed("lock-ok")
         
         let type = biometricsTypeManager.deviceUsedBiometricType()
         switch type {
         case .touchID:
-            self.fingerprintButton.setImage(imageNamed("button-fingerprint"), for: UIControlState())
-            self.fingerprintButton.setTitle(LockerUI.localized( "btn-use-fingerprint"), for: UIControlState())
+            self.fingerprintButton.setImage(imageNamed("button-fingerprint"), for: UIControl.State())
+            self.fingerprintButton.setTitle(LockerUI.localized( "btn-use-fingerprint"), for: UIControl.State())
             
         case .faceID:
-            self.fingerprintButton.setImage(imageNamed("button-face"), for: UIControlState())
-            self.fingerprintButton.setTitle(LockerUI.localized( "btn-use-faceID"), for: UIControlState())
+            self.fingerprintButton.setImage(imageNamed("button-face"), for: UIControl.State())
+            self.fingerprintButton.setTitle(LockerUI.localized( "btn-use-faceID"), for: UIControl.State())
         }
         
         var offset: CGFloat = 0.0
@@ -98,20 +98,20 @@ class InputTypeViewController: LockerViewController
         for lockInfo in self.lockerUIOptions.allowedLockTypes {
             switch lockInfo.lockType {
             case .pinLock:
-                self.pinButton.setImage(self.imageNamed("button-dots"), for: UIControlState())
+                self.pinButton.setImage(self.imageNamed("button-dots"), for: UIControl.State())
                 self.setupButton( self.pinButton, visible: true, offset: &offset )
                 
             case .biometricLock:
                 self.setupButton( self.fingerprintButton, visible: true, offset: &offset )
                 
             case .gestureLock:
-                if ( !UIAccessibilityIsVoiceOverRunning() ) {
-                    self.gestureButton.setImage(self.imageNamed("button-gesture"), for: UIControlState())
+                if ( !UIAccessibility.isVoiceOverRunning ) {
+                    self.gestureButton.setImage(self.imageNamed("button-gesture"), for: UIControl.State())
                     self.setupButton( self.gestureButton, visible: true, offset: &offset )
                 }
                 
             case .noLock:
-                self.noAuthButton.setImage(self.imageNamed("button-no-safety"), for: UIControlState())
+                self.noAuthButton.setImage(self.imageNamed("button-no-safety"), for: UIControl.State())
                 self.setupButton( self.noAuthButton, visible: true, offset: &offset )
             }
         }

@@ -346,7 +346,7 @@ class PinViewController: LockerPasswordViewController
                 UIView.animate(withDuration: animationDuration,
                     animations: {
                         for subView in self.infoBaseView.subviews {
-                            self.keypadView.bringSubview(toFront: subView)
+                            self.keypadView.bringSubviewToFront(subView)
                         }
                         self.activateConstraintsWithRespectToCurrentUIHandOrientation()
                         self.keypadViewTrailingConstraint.constant  = self.rightKeypadLandscapeConstraint
@@ -358,7 +358,7 @@ class PinViewController: LockerPasswordViewController
                 UIView.animate(withDuration: animationDuration,
                     animations: {
                         for subView in self.infoBaseView.subviews {
-                            self.keypadView.bringSubview(toFront: subView)
+                            self.keypadView.bringSubviewToFront(subView)
                         }
                         self.activateConstraintsWithRespectToCurrentUIHandOrientation()
                         self.keypadViewLeadingConstraint.constant    = self.leftKeypadLandscapeConstraint
@@ -536,9 +536,9 @@ class PinViewController: LockerPasswordViewController
                     }
                 }
                 
-                if UIAccessibilityIsVoiceOverRunning() {
+                if UIAccessibility.isVoiceOverRunning {
                     DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + Double(Int64( 0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
-                        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.infoLabel)
+                        UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: self.infoLabel)
                     })
                 }
             }
