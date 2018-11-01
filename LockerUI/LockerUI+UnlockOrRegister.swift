@@ -179,43 +179,41 @@ extension LockerUI
     // MARK: - 3) Choose the LockType
     fileprivate func proceedUserRegistrationWithCompletion( _ completion : @escaping RegistrationCompletion )
     {
-        // When `.noLock` is the only option, skip this choice ...
-        let lockerTypes = self.lockerUIOptions.allowedLockTypes
-        if lockerTypes.count == 1 && lockerTypes [0].lockType == .noLock {
-            self.registerUserWithLockType(.noLock, completion: completion)
-            return
-        }
-        
-        let inputTypeController = self.viewControllerWithName( LockerUI.InputTypeSceneName ) as! InputTypeViewController
-        inputTypeController.lockerUIOptions = self.lockerUIOptions
-        inputTypeController.lockerViewOptions = self.authFlowOptions.hideCancelButton ? LockerViewOptions.showNoButton.rawValue : LockerViewOptions.showCancelButton.rawValue
-        inputTypeController.backgroundTint = self.mainColor
-        
-        inputTypeController.completion = { result in
-            switch result {
-            case .success( let inputButtonTag as Int):
-                let lockType = LockType( rawValue: inputButtonTag )!
-                self.registerUserWithLockType( lockType, completion: completion )
-                
-            case .cancel, .backward:
-                self.popToRootLockerUIControllerWithCompletion({
-                    completion( CoreResult.failure( CoreSDKError.errorOfKind( .operationCancelled)) )
-                })
-                
-            case .failure( let error ):
-                if ( error is CoreSDKError ) {
-                    if ( ( error as! CoreSDKError ).kind == .operationCancelled ) {
-                        completion( CoreResult.failure( error))
-                        return
+        if self.lockerUIOptions.allowedLockTypes.count == 1,
+            let forcedLockType = self.lockerUIOptions.allowedLockTypes.first?.lockType {
+            self.registerUserWithLockType( forcedLockType, completion: completion )
+        } else {
+            let inputTypeController = self.viewControllerWithName( LockerUI.InputTypeSceneName ) as! InputTypeViewController
+            inputTypeController.lockerUIOptions = self.lockerUIOptions
+            inputTypeController.lockerViewOptions = self.authFlowOptions.hideCancelButton ? LockerViewOptions.showNoButton.rawValue : LockerViewOptions.showCancelButton.rawValue
+            inputTypeController.backgroundTint = self.mainColor
+            
+            inputTypeController.completion = { result in
+                switch result {
+                case .success( let inputButtonTag as Int):
+                    let lockType = LockType( rawValue: inputButtonTag )!
+                    self.registerUserWithLockType( lockType, completion: completion )
+                    
+                case .cancel, .backward:
+                    self.popToRootLockerUIControllerWithCompletion({
+                        completion( CoreResult.failure( CoreSDKError.errorOfKind( .operationCancelled)) )
+                    })
+                    
+                case .failure( let error ):
+                    if ( error is CoreSDKError ) {
+                        if ( ( error as! CoreSDKError ).kind == .operationCancelled ) {
+                            completion( CoreResult.failure( error))
+                            return
+                        }
                     }
+                    completion( CoreResult.failure( LockerError.errorOfKind(.registrationFailed, underlyingError: error)))
+                    
+                default:
+                    self.popToRootLockerUIControllerWithCompletion(nil)
                 }
-                completion( CoreResult.failure( LockerError.errorOfKind(.registrationFailed, underlyingError: error)))
-                
-            default:
-                self.popToRootLockerUIControllerWithCompletion(nil)
             }
+            self.pushLockerUIController( inputTypeController )
         }
-        self.pushLockerUIController( inputTypeController )
     }
     
     // MARK: - 4) Registration step - Input password
