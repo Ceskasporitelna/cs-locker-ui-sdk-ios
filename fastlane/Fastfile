@@ -17,7 +17,7 @@ podspec_file = 'CSLockerUI.podspec'
 xcodeproj_file = 'CSLockerUI.xcodeproj'
 repo_name = "Ceskasporitelna/cs-locker-ui-sdk-ios"
 
-fastlane_version "1.99.0"
+fastlane_version "2.107.0"
 
 default_platform :ios
 
