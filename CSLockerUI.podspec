@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.authors      = { "WebApi team" => "webapi@csas.cz" }
   s.social_media_url   = "https://twitter.com/csas_devs"
   s.platform     = :ios
-  s.platform     = :ios, "9.2"
+  s.platform     = :ios, "10"
   s.source_files  =  "LockerUI/*.{swift,h,m}"
   #s.exclude_files = "Classes/Exclude"
 
